@@ -1,0 +1,26 @@
+.pb-43 {
+    padding-bottom: 43px;
+}
+
+.flex-sb-m {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.pt-3 {
+    padding-top: 3px;
+}
+
+.pb-32 {
+    padding-bottom: 32px;
+}

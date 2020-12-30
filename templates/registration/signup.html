@@ -1,0 +1,75 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/auth.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <form class="login-form validate-form" method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <span class="login-form-title pb-43">
+                Login
+            </span>
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                  There was an error with your information. Please try again.
+                </div>
+            {% endif %}
+            <div class="wrap-input validate-input" data-validate="Username is required">
+                <input
+                        class="input"
+                        type="text"
+                        name="username"
+                        autocomplete="off"
+                        placeholder="Username"
+                        id="id_username"
+                        required
+                >
+                <span class="focus-input"></span>
+            </div>
+            <div class="wrap-input validate-input" data-validate="Email is required">
+                <input
+                        class="input"
+                        type="email"
+                        name="email"
+                        autocomplete="off"
+                        placeholder="Email"
+                        id="id_email"
+                        required
+                >
+                <span class="focus-input"></span>
+            </div>
+            <div class="wrap-input validate-input" data-validate="Password is required">
+                <input
+                        class="input"
+                        type="password"
+                        name="password1"
+                        autocomplete="off"
+                        placeholder="Password"
+                        id="id_password1"
+                        required
+                >
+                <span class="focus-input"></span>
+            </div>
+            <div class="wrap-input validate-input" data-validate="Confirm password is required">
+                <input
+                        class="input"
+                        type="password"
+                        name="password2"
+                        autocomplete="off"
+                        placeholder="Confirm Password"
+                        id="id_password2"
+                        required
+                >
+                <span class="focus-input"></span>
+            </div>
+            <div class="container-login-form-btn">
+                <button class="login-form-btn">
+                    Create Account
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
