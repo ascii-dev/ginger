@@ -1,0 +1,49 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/auth.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center align-items-center">
+        <form class="login-form validate-form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <span class="login-form-title pb-43">
+                Login
+            </span>
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                  Your username and password didn't match. Please try again.
+                </div>
+            {% endif %}
+            <div class="wrap-input validate-input" data-validate="Username is required">
+                <input
+                        class="input"
+                        type="text"
+                        name="username"
+                        autocomplete="off"
+                        placeholder="Username"
+                        id="id_username"
+                >
+                <span class="focus-input"></span>
+            </div>
+            <div class="wrap-input validate-input" data-validate="Password is required">
+                <input
+                        class="input"
+                        type="password"
+                        name="password"
+                        autocomplete="off"
+                        placeholder="Password"
+                        id="id_password"
+                >
+                <span class="focus-input"></span>
+            </div>
+            <div class="container-login-form-btn">
+                <button class="login-form-btn">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
