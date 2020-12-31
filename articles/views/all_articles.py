@@ -19,3 +19,15 @@ class AllArticlesView(ListView):
             sort_order="descending",
             sort_by="submittedDate",
         )
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(AllArticlesView, self).get_context_data(**kwargs)
+        # make sure previous is always a positive integer as we can't pull articles
+        # from a negative start point
+        previous = int(self.request.GET.get('start', 0)) - 10
+
+        context['next'] = int(self.request.GET.get('start', 0)) + 10
+        # converted previous to a string as a workaround for 0 being a False value
+        context['previous'] = str(previous) if previous >= 0 else None
+        context['max_results'] = int(self.request.GET.get('max_results', 10))
+        return context
