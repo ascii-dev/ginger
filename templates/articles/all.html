@@ -1,5 +1,5 @@
 {% extends '../base.html' %}
-{% load parse_date %}
+{% load parse_date split_get_last %}
 
 {% block content %}
 <div class="row pt-3">
@@ -12,7 +12,8 @@
                     <a href="#">{{ article.author }}</a>
                     - Category: {{ article.arxiv_primary_category.term }}</p>
                 <p>{{ article.summary|safe }}</p>
-                <a href="#">Read more...</a>
+<!--                TODO: I should find a better way than splitting this in the template-->
+                <a href="{% url 'single-article' article.id|split_get_last:'/' %}">Read more...</a>
             </div><!-- /.blog-post -->
         {% endfor %}
 

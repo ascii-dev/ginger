@@ -1,0 +1,49 @@
+{% extends '../base.html' %}
+{% load parse_date %}
+
+{% block content %}
+<div class="row pt-3">
+    <div class="col-md-8 blog-main">
+        <div class="blog-post">
+            <h2 class="blog-post-title">{{ article.title }}</h2>
+            <p class="blog-post-meta">
+                {{ article.published|parse_date|date:"M. d, Y, h:i A" }}
+            </p>
+            <p>{{ article.summary|safe }}</p>
+            <div class="row">
+                <div class="p-3">
+                    <h4 class="font-italic">Authors</h4>
+                    <ol class="list-unstyled mb-0">
+                        {% for author in article.authors %}
+                            <li><a href="#">{{ author }}</a></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+                <div class="p-3">
+                    <h4 class="font-italic">Tags</h4>
+                    <ol class="list-unstyled mb-0">
+                        {% for tag in article.tags %}
+                            <li>{{ tag.term }}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.blog-post -->
+    </div>
+
+    <aside class="col-md-4 blog-sidebar">
+        <div class="p-3">
+            <h4 class="font-italic">ArXiv Comment</h4>
+            <p>{{ article.arxiv_comment }}</p>
+        </div>
+
+        <div class="p-3">
+            <h4 class="font-italic">Links</h4>
+            <ol class="list-unstyled">
+                <li><a href="{{ article.pdf_url }}">PDF</a></li>
+                <li><a href="{{ article.arxiv_url }}">ArXiv</a></li>
+            </ol>
+        </div>
+    </aside><!-- /.blog-sidebar -->
+</div><!-- /.row -->
+{% endblock %}
