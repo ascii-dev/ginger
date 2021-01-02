@@ -1,14 +1,29 @@
 {% extends '../base.html' %}
-{% load parse_date %}
+{% load static %}
+{% load parse_date split_get_last %}
 
 {% block content %}
 <div class="row pt-3">
     <div class="col-md-8 blog-main">
         <div class="blog-post">
             <h2 class="blog-post-title">{{ article.title }}</h2>
-            <p class="blog-post-meta">
-                {{ article.published|parse_date|date:"M. d, Y, h:i A" }}
-            </p>
+                <!-- Quick dirty way to get the favorite action working, definitely need to refactor.
+                I chose to make this a post request because we're making a change on the database layer.
+                A get request just wouldn't seem right, semantically.-->
+                <form
+                    action="{% url 'create-favorite' article.id|split_get_last:'/' %}"
+                    method="POST"
+                    name="favoriteForm"
+                >
+                    {% csrf_token %}
+                    <p class="blog-post-meta">
+                        {{ article.published|parse_date|date:"M. d, Y, h:i A" }}
+                        <a href="#" onClick="document.favoriteForm.submit()">
+                            <i class="far fa-bookmark pl-5" id="favorite-article"></i>
+                        </a>
+                    </p>
+                </form>
+                <!-- End favorite action hack-->
             <p>{{ article.summary|safe }}</p>
             <div class="row">
                 <div class="p-3">
