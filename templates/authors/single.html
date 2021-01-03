@@ -1,0 +1,42 @@
+{% extends '../base.html' %}
+{% load parse_date split_get_last %}
+
+{% block content %}
+<div class="row pt-3">
+    <div class="col-md-8 blog-main">
+        {% for article in articles %}
+            <div class="blog-post">
+                <h4 class="blog-post-title">{{ article.title }}</h4>
+                <p class="blog-post-meta">
+                    {{ article.published|parse_date|date:"M. d, Y, h:i A" }} by
+                    <a href="#">{{ article.author }}</a>
+                    - Category: {{ article.arxiv_primary_category.term }}</p>
+                <p>{{ article.summary|safe }}</p>
+<!--                TODO: I should find a better way than splitting this in the template-->
+                <a href="{% url 'single-article' article.id|split_get_last:'/' %}">Read more...</a>
+            </div><!-- /.blog-post -->
+        {% endfor %}
+
+        <nav class="blog-pagination">
+            <a
+                    class="btn {% if not previous %}btn-outline-secondary disabled{% else %}btn-outline-primary{% endif %}"
+                    href="{% url 'single-author' author_name %}?start={{previous}}&max_results={{max_results}}"
+            >
+                Older
+            </a>
+            <a
+                    class="btn {% if not next %}btn-outline-secondary disabled{% else %}btn-outline-primary{% endif %}"
+                    href="{% url 'single-author' author_name %}?start={{next}}&max_results={{max_results}}"
+            >
+                Newer
+            </a>
+        </nav>
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-4 blog-sidebar">
+        <div class="p-3 mb-3 bg-light rounded">
+            <h2 class="font-italic">{{ author_name }}</h2>
+        </div>
+    </aside><!-- /.blog-sidebar -->
+</div><!-- /.row -->
+{% endblock %}
