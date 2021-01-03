@@ -10,7 +10,7 @@
         <form class="login-form validate-form" method="post" action="{% url 'signup' %}">
             {% csrf_token %}
             <span class="login-form-title pb-43">
-                Login
+                Create account
             </span>
             {% if form.errors %}
                 <div class="alert alert-danger" role="alert">
