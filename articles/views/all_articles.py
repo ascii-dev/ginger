@@ -1,6 +1,8 @@
 import arxiv
 from django.views.generic import ListView
 
+from ginger.utils.set_pagination_context import set_pagination_context
+
 
 class AllArticlesView(ListView):
     template_name = 'articles/all.html'
@@ -22,12 +24,9 @@ class AllArticlesView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(AllArticlesView, self).get_context_data(**kwargs)
-        # make sure previous is always a positive integer as we can't pull articles
-        # from a negative start point
-        previous = int(self.request.GET.get('start', 0)) - 10
-
-        context['next'] = int(self.request.GET.get('start', 0)) + 10
-        # converted previous to a string as a workaround for 0 being a False value
-        context['previous'] = str(previous) if previous >= 0 else None
-        context['max_results'] = int(self.request.GET.get('max_results', 10))
+        set_pagination_context(
+            context,
+            self.request.GET.get('start', 0),
+            self.request.GET.get('max_results', 10),
+        )
         return context
