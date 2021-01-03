@@ -4,10 +4,10 @@
         <h2 class="blog-post-title">{{ article.title }}</h2>
         <p class="blog-post-meta">
             {{ article.published|parse_date|date:"M. d, Y, h:i A" }} by
-            <a href="{% url 'single-author' article.author %}">{{ article.author }}</a>
+            <a href="{% url 'single_author' article.author %}">{{ article.author }}</a>
             - Category: {{ article.arxiv_primary_category.term }}</p>
         <p>{{ article.summary|safe }}</p>
 <!--                TODO: I should find a better way than splitting this in the template-->
-        <a href="{% url 'single-article' article.id|split_get_last:'/' %}">Read more...</a>
+        <a href="{% url 'single_article' article.id|split_get_last:'/' %}">Read more...</a>
     </div><!-- /.blog-post -->
 {% endfor %}

@@ -5,6 +5,6 @@ from favorites.views.create_favorite import CreateFavoriteView
 
 
 urlpatterns = [
-    path('<str:article_id>/', CreateFavoriteView.as_view(), name='create-favorite'),
-    path('', AllFavoritesView.as_view(), name='all-favorites'),
+    path('<str:article_id>/', CreateFavoriteView.as_view(), name='create_favorite'),
+    path('', AllFavoritesView.as_view(), name='all_favorites'),
 ]

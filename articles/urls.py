@@ -5,6 +5,6 @@ from articles.views.single_article import ArticleView
 
 
 urlpatterns = [
-    path('', AllArticlesView.as_view(), name='all-articles'),
-    path('articles/<str:article_id>/', ArticleView.as_view(), name='single-article'),
+    path('', AllArticlesView.as_view(), name='all_articles'),
+    path('articles/<str:article_id>/', ArticleView.as_view(), name='single_article'),
 ]
