@@ -1,0 +1,14 @@
+<nav class="blog-pagination">
+    <a
+        class="btn {% if not previous %}btn-outline-secondary disabled{% else %}btn-outline-primary{% endif %}"
+        href="{% url url %}?start={{previous}}&max_results={{max_results}}"
+    >
+        Older
+    </a>
+    <a
+        class="btn btn-outline-primary"
+        href="{% url url %}?start={{next}}&max_results={{max_results}}"
+    >
+        Newer
+    </a>
+</nav>
