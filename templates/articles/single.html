@@ -34,7 +34,7 @@
                     <h4 class="font-italic">Authors</h4>
                     <ol class="list-unstyled mb-0">
                         {% for author in article.authors %}
-                            <li><a href="#">{{ author }}</a></li>
+                            <li><a href="{% url 'single-author' author %}">{{ author }}</a></li>
                         {% endfor %}
                     </ol>
                 </div>
