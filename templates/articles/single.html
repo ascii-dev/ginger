@@ -16,7 +16,7 @@
                     I chose to make this a post request because we're making a change on the database layer.
                     A get request just wouldn't seem right, semantically.-->
                     <form
-                        action="{% url 'create-favorite' article.id|split_get_last:'/' %}"
+                        action="{% url 'create_favorite' article.id|split_get_last:'/' %}"
                         method="POST"
                         name="favoriteForm"
                     >
@@ -34,7 +34,7 @@
                     <h4 class="font-italic">Authors</h4>
                     <ol class="list-unstyled mb-0">
                         {% for author in article.authors %}
-                            <li><a href="{% url 'single-author' author %}">{{ author }}</a></li>
+                            <li><a href="{% url 'single_author' author %}">{{ author }}</a></li>
                         {% endfor %}
                     </ol>
                 </div>
