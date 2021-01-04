@@ -403,4 +403,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# DJango
+/staticfiles
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,django,python,vim,linux,dotenv,virtualenv,intellij+all
