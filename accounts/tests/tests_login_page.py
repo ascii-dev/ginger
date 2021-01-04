@@ -1,9 +1,8 @@
-import unittest
 from django.urls import reverse
 from django.test import Client, TestCase
 
 
-class GetLoginTests(TestCase):
+class LoginTests(TestCase):
     def setUp(self) -> None:
         """
         Sets up data needed for successful test runs
