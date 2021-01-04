@@ -4,9 +4,9 @@ sample_arxiv_article = dict(
     title='Stochastic Approximation for Online Tensorial Independent Component\n  Analysis',
     primary_category={'term': 'stat.ML'},
     published='2015-04-20T17:58:58Z',
-    author='Alex Jose',
+    author='Tony Stark',
     summary='Stochastic Approximation for Online Tensorial Independent Component\n  Analysis',
-    authors=['Alex Jose'],
+    authors=['Tony Stark', 'Oliver Queen'],
     arxiv_comment='early draft first preprint. 8 pages',
 )
 

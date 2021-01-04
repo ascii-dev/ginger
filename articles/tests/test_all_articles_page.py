@@ -2,7 +2,7 @@ from unittest.mock import patch
 from django.urls import reverse
 from django.test import Client, TestCase
 
-from articles.tests.mocks.arxiv_articles import (
+from ginger.tests.mocks.arxiv_articles import (
     sample_arxiv_article,
     mock_articles_with_query,
 )
