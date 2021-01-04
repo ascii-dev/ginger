@@ -23,3 +23,10 @@ def mock_article_with_id_list(id_list, iterative, max_results):
     Returns a mock response for a single arxiv article for testing purposes
     """
     return [sample_arxiv_article]
+
+
+def mock_article_not_found(id_list, iterative, max_results):
+    """
+    Returns a mock response representing an article that doesn't exist
+    """
+    return []
